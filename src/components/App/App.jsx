@@ -15,11 +15,13 @@ const App = () => {
     data: contacts,
     error,
     isLoading,
+    isSuccess,
     isError,
   } = useGetContactsQuery('', {
     skip: false,
     // refetchOnFocus: true,
   });
+
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
@@ -29,7 +31,7 @@ const App = () => {
   };
 
   const filterContacts = () => {
-    if (contacts && contacts.length !== 0) {
+    if (isSuccess && contacts.length !== 0) {
       const normalizedFilter = filter.toLowerCase();
       return contacts.filter(({ name }) =>
         name.toLowerCase().includes(normalizedFilter)
