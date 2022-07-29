@@ -30,8 +30,6 @@ const ContactForm = () => {
 
   const submitHandler = async event => {
     event.preventDefault();
-    const name = event.currentTarget.elements.name.value;
-    const number = event.currentTarget.elements.number.value;
     try {
       await addContact({ name, number });
       toast.success(`${name} was added`);
